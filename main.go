@@ -1,11 +1,19 @@
 package main
 
 import (
-	"fmt"
+	"log"
 
 	tutils "github.com/techmmunity/tutils/pkg"
 )
 
 func main() {
-	fmt.Print(tutils.HasURL("😄"))
+	result, err := tutils.Find([]string{}, func(c string) bool {
+		return c == "foo"
+	})
+
+	if err != nil {
+		log.Print(err.Error())
+	}
+
+	log.Print(result)
 }
